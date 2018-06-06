@@ -1,0 +1,42 @@
+{
+	"name": "expensify-app",
+	"version": "1.0.0",
+	"private": true,
+	"license": "MIT",
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^7.1.4",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-2": "^6.24.1",
+		"css-loader": "^0.28.11",
+		"csv-loader": "^2.1.1",
+		"file-loader": "^1.1.11",
+		"react-hot-loader": "^4.3.0",
+		"style-loader": "^0.21.0",
+		"uglifyjs-webpack-plugin": "^1.2.5",
+		"webpack": "^4.11.0",
+		"webpack-cli": "^3.0.2",
+		"webpack-dev-server": "^3.1.4",
+		"webpack-merge": "^4.1.2",
+		"xml-loader": "^1.2.1"
+	},
+	"dependencies": {
+		"react": "^16.4.0",
+		"react-dom": "^16.4.0"
+	},
+	"scripts": {
+		"start": "webpack-dev-server --config ./webpack.dev.js",
+		"build": "webpack --config ./webpack.prod.js"
+	},
+	"babel": {
+		"presets": [
+			"env",
+			"react"
+		],
+		"plugins": [
+			"react-hot-loader/babel"
+		]
+	}
+}
