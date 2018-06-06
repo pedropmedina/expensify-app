@@ -29,14 +29,5 @@
 	"scripts": {
 		"start": "webpack-dev-server --config ./webpack.dev.js",
 		"build": "webpack --config ./webpack.prod.js"
-	},
-	"babel": {
-		"presets": [
-			"env",
-			"react"
-		],
-		"plugins": [
-			"react-hot-loader/babel"
-		]
 	}
 }
