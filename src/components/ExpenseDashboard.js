@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// actions
 import getVisibleExpenses from '../helpers/getVisibleExpenses';
 import { addExpense, editExpense, removeExpense } from '../actions/expenses';
 import {
@@ -11,10 +12,18 @@ import {
 	setEndDate,
 } from '../actions/filters';
 
+// components
+import ExpenseList from './ExpenseList';
+import ExpenseListFilters from './ExpenseListFilters';
+
 class ExpenseDashboard extends React.Component {
 	render() {
-		console.log(this.props.expenses, this.props.filters);
-		return <div>hello there!!!!!</div>;
+		return (
+			<React.Fragment>
+				<ExpenseListFilters />
+				<ExpenseList />
+			</React.Fragment>
+		);
 	}
 }
 
@@ -24,7 +33,7 @@ const mapStateToProps = ({ expenses, filters }) => ({
 });
 
 export default connect(
-	mapStateToProps,
+	undefined,
 	{
 		addExpense,
 		editExpense,
