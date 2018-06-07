@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { hot } from 'react-hot-loader';
+import { Provider } from 'react-redux';
+
+import configStore from '../store/configStore';
 
 import Header from '../components/Header';
 import ExpenseDashboard from '../components/ExpenseDashboard';
@@ -24,4 +26,12 @@ const AppRouter = () => (
 	</Router>
 );
 
-export default hot(module)(AppRouter);
+const store = configStore();
+
+const App = () => (
+	<Provider store={store}>
+		<AppRouter />
+	</Provider>
+);
+
+export default App;
