@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // actions
-import getVisibleExpenses from '../helpers/getVisibleExpenses';
 import { addExpense, editExpense, removeExpense } from '../actions/expenses';
 import {
 	setTextFilter,
@@ -26,11 +25,6 @@ class ExpenseDashboard extends React.Component {
 		);
 	}
 }
-
-const mapStateToProps = ({ expenses, filters }) => ({
-	expenses: getVisibleExpenses(expenses, filters),
-	filters,
-});
 
 export default connect(
 	undefined,

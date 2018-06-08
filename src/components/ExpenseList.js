@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
 
-import getVisibleExpenses from '../helpers/getVisibleExpenses';
+import selectExpenses from '../selectors/expenses';
 
 import ExpenseListItem from './ExpenseListItem';
 
@@ -18,7 +18,7 @@ const ExpenseList = props => {
 };
 
 const mapStateToProps = ({ expenses, filters }) => ({
-	expenses: getVisibleExpenses(expenses, filters),
+	expenses: selectExpenses(expenses, filters),
 	filters,
 });
 
