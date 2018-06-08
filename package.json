@@ -23,7 +23,9 @@
 		"xml-loader": "^1.2.1"
 	},
 	"dependencies": {
+		"moment": "^2.22.2",
 		"react": "^16.4.0",
+		"react-dates": "^16.7.0",
 		"react-dom": "^16.4.0",
 		"react-redux": "^5.0.7",
 		"react-router-dom": "^4.3.1",
