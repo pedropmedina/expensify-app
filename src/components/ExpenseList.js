@@ -7,7 +7,6 @@ import getVisibleExpenses from '../helpers/getVisibleExpenses';
 import ExpenseListItem from './ExpenseListItem';
 
 const ExpenseList = props => {
-	console.log(props.expenses, props.filters);
 	return (
 		<div>
 			<h1>ExpenseList</h1>

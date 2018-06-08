@@ -7,7 +7,12 @@ import 'react-dates/lib/css/_datepicker.css';
 
 class ExpenseForm extends React.Component {
 	state = {
-		fields: { description: '', amount: '', note: '', createdAt: moment() },
+		fields: {
+			description: this.props.description ? this.props.description : '',
+			amount: this.props.amount ? (this.props.amount / 100).toString() : '',
+			note: this.props.note ? this.props.note : '',
+			createdAt: this.props.createdAt ? moment(this.props.createdAt) : moment(),
+		},
 		calendarFocused: false,
 		error: '',
 	};
