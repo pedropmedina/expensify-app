@@ -6,6 +6,9 @@ import configStore from './store/configStore';
 
 import AppRouter from './routers/AppRouter';
 
+// styles for react-dates
+import 'react-dates/lib/css/_datepicker.css';
+
 const store = configStore();
 
 // listen to changes in the store

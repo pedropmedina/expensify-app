@@ -5,6 +5,8 @@ import { ExpenseList } from '../../components/ExpenseList';
 
 import expenses from '../fixtures/expenses';
 
+jest.mock('uuid/v4', () => jest.fn(() => 1));
+
 test('should render ExpenseList with expenses', () => {
 	const wrapper = shallow(<ExpenseList expenses={expenses} />);
 	expect(wrapper).toMatchSnapshot();
