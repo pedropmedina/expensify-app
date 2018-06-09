@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ExpenseDashboard component correctly 1`] = `
+<React.Fragment>
+  <Connect(ExpenseListFilters) />
+  <Connect(ExpenseList) />
+</React.Fragment>
+`;

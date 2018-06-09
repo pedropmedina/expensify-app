@@ -6,13 +6,16 @@ import selectExpenses from '../selectors/expenses';
 
 import ExpenseListItem from './ExpenseListItem';
 
-const ExpenseList = props => {
+export const ExpenseList = props => {
 	return (
 		<div>
-			<h1>ExpenseList</h1>
-			{props.expenses.map(expense => {
-				return <ExpenseListItem key={uuid()} {...expense} />;
-			})}
+			{props.expenses.length === 0 ? (
+				<p>No Expenses</p>
+			) : (
+				props.expenses.map(expense => {
+					return <ExpenseListItem key={uuid()} {...expense} />;
+				})
+			)}
 		</div>
 	);
 };
