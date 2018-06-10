@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import { SingleDatePicker } from 'react-dates';
+import DatePicker from 'react-datepicker';
 
 class ExpenseForm extends React.Component {
 	state = {
@@ -30,14 +30,8 @@ class ExpenseForm extends React.Component {
 	};
 
 	onDateChange = createdAt => {
-		if (createdAt) {
-			const fields = { ...this.state.fields, createdAt };
-			this.setState({ fields });
-		}
-	};
-
-	onFocusChange = ({ focused }) => {
-		this.setState({ calendarFocused: focused });
+		const fields = { ...this.state.fields, createdAt };
+		this.setState({ fields });
 	};
 
 	onSubmit = event => {
@@ -78,14 +72,13 @@ class ExpenseForm extends React.Component {
 						placeholder="Amount"
 						onChange={this.onFieldChange}
 					/>
-					<SingleDatePicker
-						date={this.state.fields.createdAt}
-						onDateChange={this.onDateChange}
-						focused={this.state.calendarFocused}
-						onFocusChange={this.onFocusChange}
-						numberOfMonths={1}
-						isOutsideRange={() => false}
-						id="SingleDatePicker-1"
+					<DatePicker
+						selected={this.state.fields.createdAt}
+						onChange={this.onDateChange}
+						todayButton={'Today'}
+						placeholderText={'Select date for expense'}
+						isClearable={true}
+						fixedHeight
 					/>
 					<textarea
 						name="note"
