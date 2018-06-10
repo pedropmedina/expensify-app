@@ -85,6 +85,7 @@ class ExpenseForm extends React.Component {
 						onFocusChange={this.onFocusChange}
 						numberOfMonths={1}
 						isOutsideRange={() => false}
+						id="SingleDatePicker-1"
 					/>
 					<textarea
 						name="note"

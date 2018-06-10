@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import uuid from 'uuid';
+import uuidv4 from 'uuid/v4';
 
 import {
 	setTextFilter,
@@ -53,9 +53,9 @@ class ExpenseListFilters extends React.Component {
 				</select>
 				<DateRangePicker
 					startDate={this.props.filters.startDate}
-					startDateId={uuid()}
+					startDateId={uuidv4()}
 					endDate={this.props.filters.endDate}
-					endDateId={uuid()}
+					endDateId={uuidv4()}
 					onDatesChange={this.onDatesChange}
 					focusedInput={this.state.calendarFocused}
 					onFocusChange={this.onFocusChange}
