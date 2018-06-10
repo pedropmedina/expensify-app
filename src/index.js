@@ -1,3 +1,6 @@
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -5,9 +8,6 @@ import { Provider } from 'react-redux';
 import configStore from './store/configStore';
 
 import AppRouter from './routers/AppRouter';
-
-// styles for react-dates
-import 'react-dates/lib/css/_datepicker.css';
 
 const store = configStore();
 

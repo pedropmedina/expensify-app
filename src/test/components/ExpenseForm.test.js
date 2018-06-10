@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import moment from 'moment';
 
 import ExpenseForm from '../../components/ExpenseForm';
 
@@ -62,4 +63,20 @@ test('should not set amount if invalid input', () => {
 		.at(1)
 		.simulate('change', { target: { name, value } });
 	expect(wrapper.state().fields[name]).toBe('');
+});
+
+test('should call onSubmit prop for valid form submission', () => {
+	const { description, amount, note, createdAt } = expenses[0];
+	const onSubmitSpy = jest.fn();
+	const wrapper = shallow(
+		<ExpenseForm {...expenses[0]} onSubmit={onSubmitSpy} />,
+	);
+	wrapper.find('form').simulate('submit', { preventDefault: () => {} });
+	expect(wrapper.state('error')).toBe('');
+	expect(onSubmitSpy).toHaveBeenLastCalledWith({
+		description,
+		amount,
+		note,
+		createdAt,
+	});
 });
