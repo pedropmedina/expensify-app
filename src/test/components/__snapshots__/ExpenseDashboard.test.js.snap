@@ -2,6 +2,7 @@
 
 exports[`should render ExpenseDashboard component correctly 1`] = `
 <React.Fragment>
+  <Connect(ExpensesSummary) />
   <Connect(ExpenseListFilters) />
   <Connect(ExpenseList) />
 </React.Fragment>
