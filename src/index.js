@@ -8,6 +8,8 @@ import configStore from './store/configStore';
 
 import AppRouter from './routers/AppRouter';
 
+import './firebase/firebase';
+
 const store = configStore();
 
 // listen to changes in the store
