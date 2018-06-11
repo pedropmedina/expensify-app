@@ -1,11 +1,8 @@
 #dependencies
 node_modules/
 
-# ignore dist/ on deployment to heroku
-dist/bundle.js
-dist/bundle.js.map
-dist/styles.css
-dist/styles.css.map
+# ignore files in dist/ on deployment to heroku
+public/dist/
 
 # misc
 .DS_Store
