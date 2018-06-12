@@ -8,7 +8,7 @@ import configStore from './store/configStore';
 
 import AppRouter from './routers/AppRouter';
 
-import './firebase/firebase';
+// import './firebase/firebase';
 
 const store = configStore();
 
