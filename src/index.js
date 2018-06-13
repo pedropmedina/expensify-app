@@ -6,10 +6,11 @@ import { Provider } from 'react-redux';
 
 import configStore from './store/configStore';
 import { startSetExpenses } from './actions/expenses';
+import { login, logout } from './actions/auth';
 
-import AppRouter from './routers/AppRouter';
+import AppRouter, { history } from './routers/AppRouter';
 
-// import './firebase/firebase';
+import { firebase } from './firebase/firebase';
 
 const store = configStore();
 
@@ -30,8 +31,29 @@ const jsx = (
 // 	module.hot.accept(App);
 // }
 
+// avoid unecessary re-render
+let hasRendered = false;
+const renderApp = () => {
+	if (!hasRendered) {
+		ReactDOM.render(jsx, document.getElementById('root'));
+		hasRendered = true;
+	}
+};
+
 ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 
-store.dispatch(startSetExpenses()).then(() => {
-	ReactDOM.render(jsx, document.getElementById('root'));
+firebase.auth().onAuthStateChanged(user => {
+	if (user) {
+		store.dispatch(login(user.uid));
+		store.dispatch(startSetExpenses()).then(() => {
+			renderApp();
+			if (history.location.pathname === '/') {
+				history.push('/dashboard');
+			}
+		});
+	} else {
+		store.dispatch(logout());
+		renderApp();
+		history.push('/');
+	}
 });
