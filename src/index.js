@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import configStore from './store/configStore';
+import { startSetExpenses } from './actions/expenses';
 
 import AppRouter from './routers/AppRouter';
 
@@ -17,7 +18,7 @@ store.subscribe(() => {
 	console.log(store.getState());
 });
 
-const App = () => (
+const jsx = (
 	<Provider store={store}>
 		<AppRouter />
 	</Provider>
@@ -29,4 +30,8 @@ const App = () => (
 // 	module.hot.accept(App);
 // }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
+
+store.dispatch(startSetExpenses()).then(() => {
+	ReactDOM.render(jsx, document.getElementById('root'));
+});
