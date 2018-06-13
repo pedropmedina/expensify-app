@@ -10,7 +10,7 @@ const Header = ({ startLogout }) => {
 			<nav>
 				<ul>
 					<li>
-						<NavLink to="/">Dashboard</NavLink>
+						<NavLink to="/dashboard">Dashboard</NavLink>
 					</li>
 					<li>
 						<NavLink to="/create">Add Expense</NavLink>
