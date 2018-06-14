@@ -1,7 +1,79 @@
 import React from 'react';
 import moment from 'moment';
+import styled from 'styled-components';
 
 import DatePicker from 'react-datepicker';
+
+// styles
+const Form = styled.form`
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+	> * {
+		flex: 1;
+		margin: 1rem;
+
+		&:nth-child(1) {
+			display: flex;
+			flex-wrap: wrap;
+			height: 4rem;
+
+			> * {
+				flex: 1 0 100%;
+				margin-bottom: 1rem;
+				outline: none;
+				border: 0.1rem solid #eee;
+				height: 5rem;
+			}
+
+			> *:not(:nth-child(3)) {
+				text-indent: 1rem;
+				font-size: 1.6rem;
+			}
+
+			> *:not(:nth-child(4)) {
+				&:focus {
+					border-bottom: 0.2rem solid orange;
+				}
+			}
+
+			> *:nth-child(4) {
+				color: #fefefe;
+				background-color: #275db2;
+				text-indent: unset;
+			}
+		}
+
+		&:nth-child(2) {
+			height: 23rem;
+
+			> textarea {
+				height: 100%;
+				width: 100%;
+				border: 0.1rem solid #eee;
+				outline: none;
+				text-indent: 1rem;
+				padding: 1rem;
+				font-size: 1.6rem;
+				resize: vertical;
+
+				&:focus {
+					border-bottom: 0.2rem solid orange;
+				}
+			}
+		}
+	}
+`;
+
+const Error = styled.p`
+	padding: 1rem;
+	font-size: 1.6rem;
+	background-color: #c43131;
+	color: #fff;
+	width: 50rem;
+	margin: 0 auto;
+`;
 
 class ExpenseForm extends React.Component {
 	state = {
@@ -55,39 +127,42 @@ class ExpenseForm extends React.Component {
 		const { description, amount, note } = this.state.fields;
 		return (
 			<div>
-				{this.state.error && <p>{this.state.error}</p>}
-				<form onSubmit={this.onSubmit}>
-					<input
-						type="text"
-						name="description"
-						value={description}
-						placeholder="Description"
-						autoFocus
-						onChange={this.onFieldChange}
-					/>
-					<input
-						type="text"
-						name="amount"
-						value={amount}
-						placeholder="Amount"
-						onChange={this.onFieldChange}
-					/>
-					<DatePicker
-						selected={this.state.fields.createdAt}
-						onChange={this.onDateChange}
-						todayButton={'Today'}
-						placeholderText={'Select date for expense'}
-						isClearable={true}
-						fixedHeight
-					/>
-					<textarea
-						name="note"
-						value={note}
-						placeholder="Add a note for the expense (optional)"
-						onChange={this.onFieldChange}
-					/>
-					<button>add expense</button>
-				</form>
+				{this.state.error && <Error>{this.state.error}</Error>}
+				<Form onSubmit={this.onSubmit}>
+					<div>
+						<input
+							type="text"
+							name="description"
+							value={description}
+							placeholder="Description"
+							autoFocus
+							onChange={this.onFieldChange}
+						/>
+						<input
+							type="text"
+							name="amount"
+							value={amount}
+							placeholder="Amount"
+							onChange={this.onFieldChange}
+						/>
+						<DatePicker
+							selected={this.state.fields.createdAt}
+							onChange={this.onDateChange}
+							placeholderText={'Select date for expense'}
+							isClearable={true}
+							fixedHeight
+						/>
+						<button>add expense</button>
+					</div>
+					<div>
+						<textarea
+							name="note"
+							value={note}
+							placeholder="Add a note for the expense (optional)"
+							onChange={this.onFieldChange}
+						/>
+					</div>
+				</Form>
 			</div>
 		);
 	}
